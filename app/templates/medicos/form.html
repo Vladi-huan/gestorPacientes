@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">{{ 'Editar' if form.nombre.data else 'Nuevo' }} Médico</h2>
+<form method="POST" class="row g-3">
+  {{ form.hidden_tag() }}
+  <div class="col-md-6">
+    {{ form.nombre.label(class="form-label") }}
+    {{ form.nombre(class="form-control") }}
+  </div>
+  <div class="col-md-6">
+    {{ form.especialidad.label(class="form-label") }}
+    {{ form.especialidad(class="form-control") }}
+  </div>
+  <div class="col-12">
+    {{ form.submit(class="btn btn-success") }}
+    <a href="{{ url_for('main.listar_medicos') }}" class="btn btn-secondary">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+<h2>Historial de Consultas para {{ paciente.nombre }}</h2>
+<table border="1">
+  <tr>
+    <th>Fecha</th><th>Médico</th><th>Diagnóstico</th>
+  </tr>
+  {% for c in consultas %}
+  <tr>
+    <td>{{ c.fecha }}</td>
+    <td>{{ c.medico.nombre }}</td>
+    <td>{{ c.diagnostico }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="{{ url_for('main.listar_pacientes') }}">← Volver a pacientes</a>

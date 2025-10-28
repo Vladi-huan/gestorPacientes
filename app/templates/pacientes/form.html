@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">{{ 'Editar' if form.nombre.data else 'Nuevo' }} Paciente</h2>
+<form method="POST" class="row g-3">
+  {{ form.hidden_tag() }}
+  <div class="col-md-6">
+    {{ form.nombre.label(class="form-label") }}
+    {{ form.nombre(class="form-control") }}
+  </div>
+  <div class="col-md-3">
+    {{ form.edad.label(class="form-label") }}
+    {{ form.edad(class="form-control") }}
+  </div>
+  <div class="col-md-3">
+    {{ form.sexo.label(class="form-label") }}
+    {{ form.sexo(class="form-control") }}
+  </div>
+  <div class="col-md-6">
+    {{ form.telefono.label(class="form-label") }}
+    {{ form.telefono(class="form-control") }}
+  </div>
+  <div class="col-12">
+    {{ form.submit(class="btn btn-success") }}
+    <a href="{{ url_for('main.listar_pacientes') }}" class="btn btn-secondary">Cancelar</a>
+  </div>
+</form>
+{% endblock %}

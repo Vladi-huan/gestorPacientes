@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Historial de Consultas</h2>
+<a href="{{ url_for('main.nueva_consulta') }}" class="btn btn-primary mb-3">➕ Nueva Consulta</a>
+
+<table class="table table-bordered table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Paciente</th>
+      <th>Médico</th>
+      <th>Fecha</th>
+      <th>Diagnóstico</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in consultas %}
+    <tr>
+      <td>{{ c.paciente.nombre }}</td>
+      <td>{{ c.medico.nombre }}</td>
+      <td>{{ c.fecha.strftime('%d/%m/%Y') }}</td>
+      <td>{{ c.diagnostico }}</td>
+      <td>
+        <a href="{{ url_for('main.editar_consulta', id=c.id) }}" class="btn btn-sm btn-warning">✏️</a>
+        <form action="{{ url_for('main.eliminar_consulta', id=c.id) }}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-sm btn-danger">🗑️</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
